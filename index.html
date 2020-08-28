@@ -11,6 +11,14 @@
         overflow: hidden;
         background-color: #000;
       }
+        
+      .credit{
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        padding: 20px 0;
+        color: #fff;
+      }
     </style>
   <style id="panolens-style-addon">:-webkit-full-screen { width: 100% !important; height: 100% !important }</style>
 </head>
@@ -18,9 +26,19 @@
   <script src="three.min.js"></script>
   <script src="panolens.min.js"></script>
   <script type="text/javascript">
-    const panorama = new PANOLENS.ImagePanorama( 'PANO_20200827_173550.jpg' );
+    const panorama1 = new PANOLENS.ImagePanorama( 'PANO_20200827_173550.jpg' );
+    const panorama2 = new PANOLENS.ImagePanorama( 'PANO_20200813_174454.jpg' );
+    const panorama3 = new PANOLENS.ImagePanorama( 'PANO_20200813_174350.jpg' );
+      
     const viewer = new PANOLENS.Viewer();
-    viewer.add( panorama );  
+      
+    viewer.add( panorama1 );
+    viewer.add( panorama2 ); 
+    viewer.add( panorama3 ); 
+      
+    panorama1.link( panorama2, new THREE.Vector3( -3145.23, -3704.40, 1149.48 ) );
+    panorama2.link( panorama3, new THREE.Vector3( -3145.23, -3704.40, 1149.48 ) );
+    panorama3.link( panorama1, new THREE.Vector3( -3145.23, -3704.40, 1149.48 ) );
   </script>
 </body>
 </html>
